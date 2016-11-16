@@ -18,7 +18,7 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
-var phaser = (document.body.scrollTop / 1250);
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -427,10 +427,13 @@ var resizePizzas = function(size) {
       switch(size) {
         case "1":
           newWidth = 25;
+          break;
         case "2":
           newWidth = 33.33;
+          break;
         case "3":
           newWidth = 50;
+          break;
         default:
           console.log("bug in sizeSwitcher");
       }
@@ -439,7 +442,7 @@ var resizePizzas = function(size) {
       var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
 
       for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newwidth + "%";
+      randomPizzas[i].style.width = newWidth + "%";
     }
   }
 
@@ -491,6 +494,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
 var items = document.querySelectorAll('.mover');
+var phaser = (document.body.scrollTop / 1250);
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin(phaser + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
